@@ -59,7 +59,7 @@ This repository helped me improve my understanding of:
 # Author
 
 ### Rezwan Ahmed
-B.Sc Engg in CSE Student | Aspiring Software & Learner
+B.Sc Engg in CSE Student | Aspiring Software Engineer
 
 ---
 # Support
