@@ -23,6 +23,8 @@
 *.dll
 *.so.*
 
+# Backup files
+*.pdsbak
 
 # Fortran module files
 *.mod
