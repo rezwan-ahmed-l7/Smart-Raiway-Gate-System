@@ -3,7 +3,7 @@
 <p align="center">
   <img src="https://img.shields.io/badge/Proteus-000000?style=for-the-badge&logo=proteus&logoColor=white" />
   <img src="https://img.shields.io/badge/Arduino C++-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white" />
-  <img src="https://img.shields.io/badge/Blynk__IoT-24D19b?style=for-the-badge" />
+  <img src="https://img.shields.io/badge/Blynk IoT-24D19b?style=for-the-badge" />
   <img src="https://img.shields.io/badge/Digital%20Logic%20Design%20Project-ED8B00?style=for-the-badge" />
 </p>
 
@@ -42,18 +42,26 @@ The `SentinelGate_Project/` directory hosts an intelligent automated level-cross
 
 ---
 
-### System Core Architecture & FSM States
+## System Core Architecture & FSM States
+
 The system continuously evaluates physical environmental inputs and maps them into 6 discrete sequential logic states:
+
 * **IDLE:** Road barriers open (Servos at 90°), Green traffic LED active. System loops to scan incoming transits.
+
 * **WARNING_YELLOW:** Triggers when an authorized train unique ID (UID) is verified. The Yellow LED blinks, and the buzzer sounds a 3-second non-blocking clearing buffer for road traffic.
+
 * **GATES_CLOSING:** Red traffic LED turns active, and both Servo motors rotate to 0° to lock physical barriers shut.
+
 * **TRAIN_INSIDE:** System locks down. Actively tracks down-track parameters while waiting for train clearance.
+
 * **EMERGENCY_OBSTACLE:** If a vehicle is trapped on the track ($<7\text{ cm}$ perimeter), the FSM triggers an immediate hardware override—aborting closure, lifting gates back to 90°, flashing the Red LED, sounding a continuous buzzer alarm, and sending push notifications to mobile devices via Blynk Cloud.
+
 * **GATES_OPENING:** Train exits safely via the opposite RFID reader. System unlocks, resets indicators to Green, and loops back to IDLE.
 
 ---
 
-### Hardware Pin Mapping Profile
+## Hardware Pin Mapping Profile
+
 To implement this architecture, the following physical components are routed to the ESP32:
 
 | Component Module | Hardware Pin Name | Connected ESP32 Pin |
@@ -69,22 +77,24 @@ To implement this architecture, the following physical components are routed to 
 
 ---
 
-### System Implementation & Circuit Schematic
+## System Implementation & Circuit Schematic
 
 <p align="center">
   <img src="https://github.com/user-attachments/assets/6dce4abb-30f3-4ac1-9e2f-85145fca5e41" alt="IoT-Enabled Railway Crossing System with RFID Authentication" width="850"/>
 </p>
 
 <p align="center">
-  <i>Figure 1: Graphical hardware implementation layout showcasing the integration of the ESP32 microcontroller with dual RFID readers, servo gates, obstacles tracking sensors, and signaling peripherals.</i>
+  <i>Graphical hardware implementation layout showcasing the integration of the ESP32 microcontroller with dual RFID readers, servo gates, obstacles tracking sensors, and signaling peripherals.</i>
 </p>
 
 ---
 
-### Fail-Safe Software Features
+## Fail-Safe Software Features
 
 * **Asynchronous State Timing:** Utilizes `millis()` clocks within sequential states (such as warning/emergency delays) instead of blocking multi-second `delay()` macros, ensuring the hardware sensor validation loops remain awake and continuously polling.
+
 * **Direction Agnostic Logic:** Automatically registers whichever RFID sub-system is triggered first as the `entryRFID` node. The system evaluates the exit cycle based on the dynamic comparison `detectedReader != entryRFID`, allowing flawless bidirectional train crossing tracking.
+
 * **Resilient Offline Fallback:** Designed with a non-blocking Wi-Fi timeout interface logic. If the local internet routing fails, the system automatically runs in offline mode—maintaining 100% localized safety loops, sensor detection, and servo gate operation.
 
 ---
@@ -92,10 +102,15 @@ To implement this architecture, the following physical components are routed to 
 # Project Team & Contributions
 
 This Capstone Project was developed collectively by our lab group:
+
 * **Rezwan Ahmed:** RFID tracking matrices, unique 4-byte UID array security filter, and `checkRFIDs()` algorithm design.
-* **Sifat:** Physical servo barrier mechanics, Git repository management, and code file merging.
+
 * **Udoy (Team Leader):** HC-SR04 sonar distance computing logic, error bounds calibration, and safe-distance validations.
+
+* **Sifat:** Physical servo barrier mechanics, Git repository management, and code file merging.
+
 * **Saccha:** Wi-Fi connection pooling, Blynk integration layout, and mobile event signal pushing.
+
 * **Esha:** Audio buzzer alert routines, three-phase LED signal wiring, and shared breadboard common ground management.
 
 ---
@@ -128,6 +143,7 @@ This repository helped me improve my understanding of:
 # Author
 
 ### Rezwan Ahmed
+
 B.Sc Engg in CSE Student | Aspiring Software Engineer & Learner
 
 ---
