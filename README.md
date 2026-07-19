@@ -105,7 +105,7 @@ This Capstone Project was developed collectively by our lab group:
 
 * **Rezwan Ahmed:** RFID tracking matrices, unique 4-byte UID array security filter, and `checkRFIDs()` algorithm design.
 
-* @sadudoy **(Team Leader):** HC-SR04 sonar distance computing logic, error bounds calibration, and safe-distance validations.
+* **[@sadudoy](https://github.com/sadudoy) (Team Leader):** HC-SR04 sonar distance computing logic, error bounds calibration, and safe-distance validations.
 
 * **Sifat:** Physical servo barrier mechanics, Git repository management, and code file merging.
 
