@@ -103,9 +103,9 @@ To implement this architecture, the following physical components are routed to 
 
 This Capstone Project was developed collectively by our lab group:
 
-* **Rezwan Ahmed:** RFID tracking matrices, unique 4-byte UID array security filter, and `checkRFIDs()` algorithm design.
+* **[Rezwan Ahmed](https://github.com/rezwan-ahmed-l7):** RFID tracking matrices, unique 4-byte UID array security filter, and `checkRFIDs()` algorithm design.
 
-* **[@sadudoy](https://github.com/sadudoy) (Team Leader):** HC-SR04 sonar distance computing logic, error bounds calibration, and safe-distance validations.
+* **[Sad Udoy](https://github.com/sadudoy) (Team Leader):** HC-SR04 sonar distance computing logic, error bounds calibration, and safe-distance validations.
 
 * **Sifat:** Physical servo barrier mechanics, Git repository management, and code file merging.
 
